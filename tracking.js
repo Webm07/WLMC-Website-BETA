@@ -1,6 +1,15 @@
 var audioElement = document.getElementById('radio-player');
 var startTime;
 
+  // If the audio is already playing, trigger the play event manually
+if (!audioElement.paused) {
+  startTime = Date.now();
+  gtag('event', 'play_stream', {
+    'event_category': 'Radio Player',
+    'event_label': 'Stream Play'
+  });
+}
+
 // Event listener for play
 audioElement.addEventListener('play', function() {
   startTime = Date.now(); // Store the start time when the user presses play
