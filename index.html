@@ -1,39 +1,61 @@
 <!doctype html>
 <html lang="en">
 <head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D558QCPF1T"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-D558QCPF1T');
-</script>
-
-<meta charset="UTF-8">
-<title>WLMC, Landmark College's Streaming Radio Station</title>
-<link rel="stylesheet" href="wlmc.css" type="text/css">
-
+  <meta charset="UTF-8" />
+  <title>WLMC — Landmark College’s Streaming Radio Station</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="wlmc.css" type="text/css" />
 </head>
 
 <body>
-    <div class="playbox">   
-        <div>
-            <img class="wlmclogo" src="WLMC-logo+info.png" alt="WLMC Logo" />
-        </div>
-        <div class="wlmcplay">
-            <audio id="radio-player" src="https://wlmc.landmark.edu:8880/stream" autoplay="true" controls="true" volume="1.0" ></audio>
-        </div>
-        <p>
-            <button class="wlmcbutt" onClick="window.open('https://www.landmark.edu/student-life/student-media', '_blank'); return false;" style="margin-right: 15px;">Check out our official Web page</button>
-            <button class="wlmcbutt" onClick="window.open('https://lcvoices.com/about/staff/?schoolyear=Current%20DJs', '_blank'); return false;">Meet the DJs</button>
-        </p>
+  <div class="playbox">
+    <img class="SharkyVinyl" 
+         id="vinyl-img" 
+         src="SharkyVinyl.png" 
+         alt="Sharky Vinyl record" />
+
+    <div class="wlmcplay">
+      <audio
+        id="radio-player"
+        src="https://wlmc.landmark.edu:8880/stream"
+        controls
+        preload="none">
+        Your browser does not support the audio element.
+      </audio>
     </div>
-    </div class="message-box">
-        <p>Winners of the best college station award 2022&2023. Thank you for listening</p>
-    </div>
+
+    <p class="button-row">
+      <button class="wlmcbutt"
+        onclick="window.open('https://www.landmark.edu/student-life/student-media', '_blank', 'noopener'); return false;">
+        Check out our official web page
+      </button>
+      <button class="wlmcbutt"
+        onclick="window.open('https://lcvoices.com/about/staff/?schoolyear=Current%20DJs', '_blank', 'noopener'); return false;">
+        Meet the DJs
+      </button>
+    </p>
+  </div>
+
+  <div class="message-box">
+    <p>Winners of the Best College Station award 2022 &amp; 2023. Thank you for listening!</p>
+  </div>
+
+  <script src="tracking.js"></script>
+  <script>
+    const audio = document.getElementById("radio-player");
+    const vinyl = document.getElementById("vinyl-img");
+
+    audio.addEventListener("play", () => {
+      vinyl.src = "SharkyVinyl.gif";
+    });
+
+    audio.addEventListener("pause", () => {
+      vinyl.src = "SharkyVinyl.png";
+    });
+
+    audio.addEventListener("ended", () => {
+      vinyl.src = "SharkyVinyl.png"; 
+    });
+  </script>
 </body>
-<script src="tracking.js"></script>
 </html>
