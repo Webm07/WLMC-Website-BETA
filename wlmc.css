@@ -5,7 +5,7 @@
   --gap: 12px;
   --radius: 16px;
 
-  /* Landmark brand colors */
+  /* Landmark colors */
   --blue: #001871;
   --gold: #ffcd00;
   --light-blue: #D6E4F3;
@@ -41,7 +41,7 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Logo (if used separately) */
+/* Logo*/
 .wlmclogo {
   width: 200px;
   margin-bottom: 20px;
