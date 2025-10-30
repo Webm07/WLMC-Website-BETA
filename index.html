@@ -1,61 +1,81 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>WLMC — Landmark College’s Streaming Radio Station</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="wlmc.css" type="text/css" />
+	<meta charset="UTF-8" />
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+	<title>WLMC Radio: The Finn — Stream Landmark College Radio Live! </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--<link rel="stylesheet" href="wlmc.css" type="text/css" />-->
+	<script defer src="clouds.js"></script>
+<link href="wlmc2.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-  <div class="playbox">
-    <img class="SharkyVinyl" 
-         id="vinyl-img" 
-         src="SharkyVinyl.png" 
-         alt="Sharky Vinyl record" />
-
-    <div class="wlmcplay">
-      <audio
-        id="radio-player"
-        src="https://wlmc.landmark.edu:8880/stream"
-        controls
-        preload="none">
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-
-    <p class="button-row">
-      <button class="wlmcbutt"
-        onclick="window.open('https://www.landmark.edu/student-life/student-media', '_blank', 'noopener'); return false;">
-        Check out our official web page
-      </button>
-      <button class="wlmcbutt"
-        onclick="window.open('https://lcvoices.com/about/staff/?schoolyear=Current%20DJs', '_blank', 'noopener'); return false;">
-        Meet the DJs
-      </button>
-    </p>
+  <div class="background">
+    <img src="site-bkg.png" alt="Background" />
+  </div>
+	
+<div class="content-overlay">
+	
+  <div class="clouds-top">
+    <img src="Cloud.png" class="cloud c1" data-href="#about" alt="About link" />
+    <img src="Cloud.png" class="cloud c2" data-href="#schedule" alt="Schedule link" />
+    <img src="Cloud.png" class="cloud c3" data-href="#contact" alt="Contact link" />
   </div>
 
-  <div class="message-box">
-    <p>Winners of the Best College Station award 2022 &amp; 2023. Thank you for listening!</p>
-  </div>
+  <div class="wrap"> <!--this is the box -->
+    <main class="site-box" role="main" aria-label="Main content">
+      <!-- vinyl & record image -->
+      <img id="recordImg" class="vinyl" src="StreamPause.png" alt="WLMC record (paused)" />
 
-  <script src="tracking.js"></script>
-  <script>
-    const audio = document.getElementById("radio-player");
-    const vinyl = document.getElementById("vinyl-img");
+      	<div class="controls">
+        	<h1 class="station-title">WLMC Radio — The Finn</h1>
+        	<p class="status" id="statusText">Station offline</p>
 
-    audio.addEventListener("play", () => {
-      vinyl.src = "SharkyVinyl.gif";
-    });
+        	<div class="play-row">
+          	<!-- Play/Pause button (image asset you provided) -->
+          	<img id="playBtn" class="play-btn" src="Play.png" alt="Play" tabindex="0" role="button" />
+         	<div>
+			<audio id="stream"></audio>
+			<p style="margin:0;font-size:14px;color:#233645;">Live stream</p>
+          	  <small style="color:#5b6d7a;">Click the button to connect to the stream.</small>
+         	 </div> <!--end audio stream -->
+        	</div> <!--end play row -->
+	
+        <!-- Optional: visible audio element (hidden) -->
+      </div> <!--end controls-->
+    </main>
 
-    audio.addEventListener("pause", () => {
-      vinyl.src = "SharkyVinyl.png";
-    });
+<main class="site-box link-box">
+  <h2><a href="#about">About Us</a></h2>
 
-    audio.addEventListener("ended", () => {
-      vinyl.src = "SharkyVinyl.png"; 
-    });
-  </script>
-</body>
+</main>
+
+   <main class="site-box schedule-box" role="main" aria-label="Main content">
+      <!-- this is the schedule stuff -->
+	<div id="schedule">
+	<center><h1>Schedule</h1>
+		<img id="sched_img" alt="WLMC Show Schedule" src="https://lcvoices.com/wp-content/uploads/2025/09/WLMC-Fall-2025-Schedule-V2-768x994.jpg"></center>
+	</div><!-- end schedule stuff -->
+    </main>
+
+<main class="site-box link-box">
+  <h2><a href="#contact">Contact Us</a></h2>
+ 
+</main>
+
+
+  </div><!--end wrap-->
+
+
+
+
+<footer style="padding:20px; text-align:center;">
+  &copy; 2025 WLMC Radio. All Rights Reserved.
+</footer>
+	</div> <!--end overlay-->
+
+
+	</body>
+
+
 </html>
