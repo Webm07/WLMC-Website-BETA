@@ -1,0 +1,227 @@
+@charset "utf-8";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;         /* don’t lock height here */
+  overflow-x: hidden;   /* prevent sideways scroll */
+  overflow-y: auto;     /* one vertical scrollbar */
+}
+
+  /* --- scrolling background that covers entire page --- */
+body {
+  margin: 0;
+  background: url('site-bkg.png') top center no-repeat;
+  background-size: 100% auto;
+  /*width: 100%;
+  height: 6071px; /* exactly your image height */
+  /*overflow-x: hidden; /* no sideways scroll */
+}
+	
+.background img {
+  position: absolute;   /* sits behind everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  pointer-events: none; /* background can't be clicked */
+}
+	
+/* content overlays background */
+.content-overlay {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  /* remove height:100% or overflow-y if you added it */
+}
+
+  /* --- container to center the "box" where the player lives --- */
+.wrap {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+   align-items: flex-end; /* ← aligns boxes to the right */
+  justify-content: flex-end;   /* was center → now push to right side */
+  padding: 6vh 20px;
+  box-sizing: border-box;
+flex-direction: column; /* stack children vertically */
+}
+
+  /* --- the retained "white box" (like current site) --- */
+.site-box {
+    position: relative;
+  top: -350px;    /* move up by ~150–200px */
+  right: -100px;   /* nudge closer to right */
+  background: rgba(9, 29, 222, 0.3);
+    padding: 20px;
+  border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;  /* stack vertically instead of row */
+  gap: 18px;
+  align-items: center;
+  box-sizing: border-box;
+
+	
+  max-width: 90%;           /* prevent overflow on small screens */
+}
+
+.station-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0b2540;
+  margin: 0;
+}
+
+/* Reduce gap before schedule section */
+#schedule {
+  margin-top: -20px;   /* pulls schedule upwards */
+margin-bottom: 60px;
+}
+
+#sched_img {
+  width: 70%;/* adjust width here for the actual image */
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+.schedule-box {
+   margin-top: 40px; /* pull it closer to the stream box */
+max-width: 30%; /* adjust width here for the outer blue box */
+
+}
+
+/* optional: make the text look like a proper header */
+#schedule center {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+  /* --- vinyl image --- */
+.vinyl {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 14px; /* spacing below record */
+}
+
+.controls {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center text/buttons in column */
+  text-align: center;
+  gap: 12px;
+}
+
+  /* play/pause button image */
+  .play-btn {
+    width: 84px;
+    height: auto;
+    cursor: pointer;
+    user-select: none;
+    display:inline-block;
+  }
+  .play-row { display:flex; align-items:center; gap:14px; }
+
+  /* small text area for station title or status */
+  .station-title {
+    font-size: 18px;
+    font-weight: 700;
+    color:#0b2540;
+    margin:0;
+  }
+  .status {
+    font-size: 13px;
+    color:#334e63;
+    margin:0;
+  }
+
+  /* --- clouds layer (sits above background) --- */
+  .clouds {
+    position: absolute;
+    inset: 0; /* cover page */
+	top: 50px; /* stays in first 400px area */
+    pointer-events: none; /* default; clouds themselves will enable pointer-events */
+    z-index: 5;  /* below .site-box, above background */
+  }
+
+
+
+/* clouds float horizontally across */
+@keyframes floatBounce {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(60vw); } /* how far they travel */
+}
+	
+	
+
+.cloud {
+  position: absolute;
+  width: clamp(80px, 14vw, 220px);
+  height: auto;
+  cursor: pointer;
+  animation: floatBounce linear infinite alternate; /* makes them bounce */
+}
+
+
+.clouds-top {
+  position: relative;
+  width: 100%;
+  height: 400px;  /* cloud zone */
+  overflow: hidden;
+}
+	
+#recordImg {
+  max-width: 150%;
+  height: auto;   /* keep aspect ratio */
+  display: block;
+  margin: 0 auto; /* center horizontally */
+}
+
+.cloud.c1 { top: 40px;  left: 5vw;  animation-duration: 25s; }
+.cloud.c2 { top: 140px; left: 15vw; animation-duration: 35s; }
+.cloud.c3 { top: 220px; left: 25vw; animation-duration: 30s; }
+
+  /* cloud hover */
+	.cloud:hover { transform: scale(1.03); opacity: 0.98; }
+
+  /* responsive adjustments */
+  @media (max-width : 1063px ){
+    .vinyl { width:120px; height:120px; flex-basis:120px; }
+    .play-btn { width:64px; }
+    .cloud { width: clamp(64px, 20vw, 160px); }
+    .site-box { padding:16px; gap:12px; border-radius:10px; }
+  }
+.link-box {
+  max-width: 400px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  margin-top: 20px;
+  text-align: center;
+}
+
+.link-box h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  color: #0b2540;
+  margin-bottom: 10px;
+}
+
+.link-box a {
+  color: #233645;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-box a:hover {
+  text-decoration: underline;
+}
